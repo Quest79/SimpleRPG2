@@ -12,8 +12,20 @@ printhelp = 0
 
 
 class Charactor(object):
-    def __init__(self, name='', prof='', health=100, mana=10, armor=100, strength=10, level=1, alive=True,
-                 miss=5, dodge=5, parry=5, block=5, crit=15):
+    def __init__(self,
+                 name='',
+                 prof='',
+                 health=100,
+                 mana=10,
+                 armor=100,
+                 strength=10,
+                 level=1,
+                 alive=True,
+                 miss=5,
+                 dodge=5,
+                 parry=5,
+                 block=5,
+                 crit=15):
         """name='', prof='', health=100, mana=10, armor=100, strength=10, level=1, alive=True,
                  miss=5, dodge=5, parry=5, block=5, crit=15"""
         self.name = name
@@ -72,33 +84,39 @@ class Charactor(object):
         return self.missrange
 
     def dodgeRange(self):
-        self.dodgerange = p.mulT(self.mis, mTen), p.mulT(
-            self.miss+self.dodge, mTen)
+        self.dodgerange = p.mulT(self.mis,
+                                 mTen), p.mulT(self.miss + self.dodge, mTen)
         return self.dodgerange
 
     def parryRange(self):
-        self.parryrange = p.mulT(
-            self.mis+self.dodge, mTen), p.mulT(self.miss+self.dodge+self.parry, mTen)
+        self.parryrange = p.mulT(self.mis + self.dodge, mTen), p.mulT(
+            self.miss + self.dodge + self.parry, mTen)
         return self.parryrange
 
     def blockRange(self):
-        self.blockrange = p.mulT(self.mis+self.dodge+self.parry, mTen), p.mulT(
-            self.miss+self.dodge+self.parry+self.block, mTen)
+        self.blockrange = p.mulT(
+            self.mis + self.dodge + self.parry,
+            mTen), p.mulT(self.miss + self.dodge + self.parry + self.block,
+                          mTen)
         return self.blockrange
 
     def critRange(self):
-        self.critrange = p.mulT(self.mis+self.dodge+self.parry+self.block, mTen), p.mulT(
-            self.miss+self.dodge+self.parry+self.block+self.crit, mTen)
+        self.critrange = p.mulT(
+            self.mis + self.dodge + self.parry + self.block, mTen), p.mulT(
+                self.miss + self.dodge + self.parry + self.block + self.crit,
+                mTen)
         if self.critrange[1] > attackTableRange:
             self.critrange = p.mulT(
-                self.mis+self.dodge+self.parry+self.block, mTen), attackTableRange
+                self.mis + self.dodge + self.parry + self.block,
+                mTen), attackTableRange
             return self.critrange
         else:
             return self.critrange
 
     def hitRange(self):
         self.hitrange = p.mulT(
-            self.mis+self.dodge+self.parry+self.block+self.crit, mTen), attackTableRange
+            self.mis + self.dodge + self.parry + self.block + self.crit,
+            mTen), attackTableRange
         if self.hitrange[0] > attackTableRange:
             print("Hit value pushed off hit table:")
             return self.hitrange
@@ -130,10 +148,32 @@ class Charactor(object):
             return "Error, Reached no result. How.. " + str(self.swing)
 
 
-e = Charactor('Bear', 'mob', 100, 10, 100, 15, 1, True,
-              miss=5, dodge=5, parry=5, block=10, crit=25)
-h = Charactor('Tim', 'Mage', 100, 10, 100, 10, 1, True,
-              miss=5, dodge=5, parry=5, block=10, crit=25)
+e = Charactor('Bear',
+              'mob',
+              100,
+              10,
+              100,
+              15,
+              1,
+              True,
+              miss=5,
+              dodge=5,
+              parry=5,
+              block=10,
+              crit=25)
+h = Charactor('Tim',
+              'Mage',
+              100,
+              10,
+              100,
+              10,
+              1,
+              True,
+              miss=5,
+              dodge=5,
+              parry=5,
+              block=10,
+              crit=25)
 
 sword = Equip('sword', 1.0, 10, 20, 5, 0, "The First Sword")
 axe = Equip('axe', 1.2, 12, 18, 10, 0, "The First Sword")
@@ -153,19 +193,18 @@ print("CRIT - " + str(e.critRange()))
 print("NHIT - " + str(e.hitRange()))
 print("------------------------------------")
 print("------------------------------------")
-print("My name is:       "+str(h.name))
-print("My armor DR is:   "+str(h.armorDR()))
-print("My defense DR is: "+str(h.defenseDR()))
-print("My total is:      "+str(h.damageReduction()))
+print("My name is:       " + str(h.name))
+print("My armor DR is:   " + str(h.armorDR()))
+print("My defense DR is: " + str(h.defenseDR()))
+print("My total is:      " + str(h.damageReduction()))
 print("------------------------------------")
-print("If hit for 10000, I take " +
-      str(h.damageTaken(10000)) + " damage.")
+print("If hit for 10000, I take " + str(h.damageTaken(10000)) + " damage.")
 print("------------------------------------")
-print("My weapon is a:          "+str(sword.etype))
-print("My weapon is called:     "+str(sword.name))
-print("It has a high damage of: "+str(sword.highdmg))
-print("It has a low damage of:  "+str(sword.lowdmg))
-print("Averges to:              "+str(sword.getDamageAvg()))
+print("My weapon is a:          " + str(sword.etype))
+print("My weapon is called:     " + str(sword.name))
+print("It has a high damage of: " + str(sword.highdmg))
+print("It has a low damage of:  " + str(sword.lowdmg))
+print("Averges to:              " + str(sword.getDamageAvg()))
 for i in range(2):
     print("Attack --> " + str(sword.getRandDmg()))
 print("------------------------------------")
@@ -188,11 +227,11 @@ for x in range(0):
     if attack_type == "blockd":
         print("We got blocked. Damage done: " +
               str(e.damageBlocked(e.damageTaken(swing_damage))))
-        hitp = hitp-e.damageBlocked(e.damageTaken(swing_damage))
+        # hitp = hitp - e.damageBlocked(e.damageTaken(swing_damage))
     if attack_type == "crithit":
-        print("Critical strike of " + str(e.damageTaken(swing_damage*critM)))
-        hitp = hitp-(e.damageTaken(swing_damage*critM))
-        print(hitp)
+        print("Critical strike of " + str(e.damageTaken(swing_damage * critM)))
+        # hitp = hitp - (e.damageTaken(swing_damage * critM))
+        # print(hitp)
     print(attack_type)
     print(e.swing)
     print("++++++++++++++++++++++++++++++++++++")
@@ -213,8 +252,9 @@ while not h.alive:
                   str(e.damageTaken(swing_damage * critM)))
             h.health = h.health - (e.damageTaken(swing_damage * critM))
         elif attack_type == "Block":
-            print(str(e.blkdmg) + " got blocked. Damage done: " +
-                  str(e.damageBlocked(e.damageTaken(swing_damage))))
+            print(
+                str(e.blkdmg) + " got blocked. Damage done: " +
+                str(e.damageBlocked(e.damageTaken(swing_damage))))
             h.health = h.health - e.damageBlocked(e.damageTaken(swing_damage))
         elif attack_type == "Miss":
             pass
@@ -233,12 +273,11 @@ while not h.alive:
         print("*** IM DEAD ***")
         h.alive = False
 
-
 while h.alive:
     e_dmg = axe.getRandDmg()
     h_dmg = sword.getRandDmg()
     e_type = e.getHitType()
-    h_type = h.getHitType() 
+    h_type = h.getHitType()
     ask = input("Would you like to attack? y/n: ")
 
     if ask == "y":
