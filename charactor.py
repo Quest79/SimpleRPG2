@@ -12,20 +12,7 @@ printhelp = 0
 
 
 class Charactor(object):
-    def __init__(self,
-                 name='',
-                 prof='',
-                 health=100,
-                 mana=10,
-                 armor=100,
-                 strength=10,
-                 level=1,
-                 alive=True,
-                 miss=5,
-                 dodge=5,
-                 parry=5,
-                 block=5,
-                 crit=15):
+    def __init__(self, name='', prof='', health=100, mana=10, armor=100, strength=10, level=1, alive=True, miss=5, dodge=5, parry=5, block=5, crit=15):
         """name='', prof='', health=100, mana=10, armor=100, strength=10, level=1, alive=True,
                  miss=5, dodge=5, parry=5, block=5, crit=15"""
         self.name = name
@@ -148,32 +135,10 @@ class Charactor(object):
             return "Error, Reached no result. How.. " + str(self.swing)
 
 
-e = Charactor('Bear',
-              'mob',
-              100,
-              10,
-              100,
-              15,
-              1,
-              True,
-              miss=5,
-              dodge=5,
-              parry=5,
-              block=10,
-              crit=25)
-h = Charactor('Tim',
-              'Mage',
-              100,
-              10,
-              100,
-              10,
-              1,
-              True,
-              miss=5,
-              dodge=5,
-              parry=5,
-              block=10,
-              crit=25)
+e = Charactor('Bear', 'mob', 100, 10, 100, 15, 1, True,
+              miss=5, dodge=5, parry=5, block=10, crit=25)
+h = Charactor('Tim', 'Mage', 100, 10, 100, 10, 1, True,
+              miss=5, dodge=5, parry=5, block=10, crit=25)
 
 sword = Equip('sword', 1.0, 10, 20, 5, 0, "The First Sword")
 axe = Equip('axe', 1.2, 12, 18, 10, 0, "The First Sword")
