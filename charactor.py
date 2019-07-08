@@ -232,7 +232,7 @@ while not h.alive:
         print("After DmgR: " + str(e.damageTaken(swing_damage)))
         print(h.name + " health out of " + str(hmax) + ": ->" + str(h.health))
         print("++++++++++++++++++++++++++++++++++++")
-        print("+++++++++++++++++THIS IS A TEST+++++++++++++++++++")
+        print("++++++++++++++++++++++++++++++++++++")
 
     elif h.health <= 0:
         print("*** IM DEAD ***")
