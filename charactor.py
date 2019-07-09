@@ -82,9 +82,7 @@ class Charactor(object):
 
     def blockRange(self):
         self.blockrange = p.mulT(
-            self.mis + self.dodge + self.parry,
-            mTen), p.mulT(self.miss + self.dodge + self.parry + self.block,
-                          mTen)
+            self.mis + self.dodge + self.parry, mTen), p.mulT(self.miss + self.dodge + self.parry + self.block, mTen)
         return self.blockrange
 
     def critRange(self):

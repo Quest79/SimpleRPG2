@@ -10,10 +10,7 @@ SCREEN_TITLE = "Platformer"
 
 
 class MyGame(arcade.Window):
-    """
-    Main application class.
-    """
-
+    """Main application class."""
     def __init__(self):
 
         # Call the parent class and set up the window
